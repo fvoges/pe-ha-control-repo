@@ -12,7 +12,6 @@ class profile::puppet::classification {
     ensure               => 'present',
     environment          => 'production',
     override_environment => false,
-    parent               => 'All Nodes',
     rule                 => ['and', ['~', 'name', '.*']],
   }
   node_group { 'PE ActiveMQ Broker':
