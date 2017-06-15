@@ -1,6 +1,5 @@
 # class profile::puppet::compile
 class profile::puppet::compile {
-  include ::node_manager
 
   @@haproxy::balancermember { "puppet_${::certname}":
     listening_service => 'puppet00',
