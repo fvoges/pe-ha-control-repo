@@ -11,6 +11,8 @@ mod 'puppetlabs/haproxy', '1.5.0'
 mod 'WhatsARanjit-node_manager', '0.4.2'
 mod 'pltraining-rbac', '0.0.5'
 mod 'abrader-gms', '1.0.3'
+mod 'npwalker-pe_databases', '0.10.0'
+mod 'fvoges-pe_backup', '1.0.2'
 
 # Modules from Github using various references
 # Further examples: https://github.com/puppetlabs/r10k/blob/master/doc/puppetfile.mkd#examples
