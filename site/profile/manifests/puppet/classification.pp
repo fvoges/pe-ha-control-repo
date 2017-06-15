@@ -1,6 +1,5 @@
 # class profile::puppet::classification
 class profile::puppet::classification {
-  require ::node_manager
 
   node_group { 'Agent-specified environment':
     ensure               => 'present',
