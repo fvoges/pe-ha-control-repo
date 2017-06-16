@@ -6,18 +6,18 @@ class profile::puppet::lb {
   haproxy::listen { 'puppet00':
     ipaddress => $::facts['networking']['ipaddress'],
     ports     => '8140',
-    options   => [
-      'leastconn',
-    ],
+    options   => {
+      'balance' => 'leastconn',
+    },
   }
 
   haproxy::listen { 'orchestrator00':
     ipaddress => $::facts['networking']['ipaddress'],
     ports     => '8142',
-    options   => [
-      'leastconn',
-      'timeout tunnel 15m',
-    ],
+    options   => {
+      'balance'        => 'leastconn',
+      'timeout tunnel' => '15m',
+    },
   }
 
 }
