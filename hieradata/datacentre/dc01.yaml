@@ -1,0 +1,4 @@
+---
+puppet_enterprise::profile::mcollective::agent::activemq_brokers:
+  - 'master01.puppetdebug.vlan'
+  - 'master02.puppetdebug.vlan'
