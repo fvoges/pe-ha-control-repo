@@ -1,7 +1,7 @@
 # class profile::puppet::compile
 class profile::puppet::compile {
 
-  @@haproxy::balancermember { "puppet_${::certname}":
+  @@haproxy::balancermember { "puppet_${::clientcert}":
     listening_service => 'puppet00',
     server_names      => $::facts['networking']['hostname'],
     ipaddresses       => $::facts['networking']['ip'],
@@ -9,7 +9,7 @@ class profile::puppet::compile {
     options           => 'check',
   }
 
-  @@haproxy::balancermember { "orchestrator_${::certname}":
+  @@haproxy::balancermember { "orchestrator_${::clientcert}":
     listening_service => 'orchestrator00',
     server_names      => $::facts['networking']['hostname'],
     ipaddresses       => $::facts['networking']['ip'],
