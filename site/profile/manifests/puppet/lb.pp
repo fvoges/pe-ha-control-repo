@@ -4,7 +4,7 @@ class profile::puppet::lb {
   class { '::haproxy': }
 
   haproxy::listen { 'puppet00':
-    ipaddress => $::facts['networking']['ip'],
+    ipaddress => $::facts['networking']['eth1']['ip'],
     ports     => '8140',
     options   => {
       'balance' => 'leastconn',
@@ -12,7 +12,7 @@ class profile::puppet::lb {
   }
 
   haproxy::listen { 'orchestrator00':
-    ipaddress => $::facts['networking']['ip'],
+    ipaddress => $::facts['networking']['eth1']['ip'],
     ports     => '8142',
     options   => {
       'balance'        => 'leastconn',
