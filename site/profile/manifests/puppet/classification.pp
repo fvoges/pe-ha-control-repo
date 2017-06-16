@@ -32,7 +32,9 @@ class profile::puppet::classification {
   node_group { 'PE Agent':
     ensure               => 'present',
     classes              => {
-      'puppet_enterprise::profile::agent' => {},
+      'puppet_enterprise::profile::agent' => {
+        'package_inventory_enabled' => true,
+      },
     },
     environment          => 'production',
     override_environment => false,
@@ -167,6 +169,46 @@ class profile::puppet::classification {
     rule                 => ['and', ['~', 'name', '.*']],
   }
 
+  node_group { 'Application: Puppet':
+    ensure               => 'present',
+    environment          => 'production',
+    override_environment => false,
+    parent               => 'All Nodes',
+    rule                 => [
+      'and',
+        ['=', ['trusted', 'extensions', 'pp_application'], 'puppet'],
+    ],
+  }
+
+  node_group { 'Datacentre':
+    ensure               => 'present',
+    environment          => 'production',
+    override_environment => false,
+    parent               => 'All Nodes',
+  }
+
+  node_group { 'Datacentre: DC01':
+    ensure               => 'present',
+    environment          => 'production',
+    override_environment => false,
+    parent               => 'Datacentre',
+    rule                 => [
+      'and',
+        ['=', ['fact','org_datacentre'], 'dc01'],
+    ],
+  }
+
+  node_group { 'Datacentre: DC02':
+    ensure               => 'present',
+    environment          => 'production',
+    override_environment => false,
+    parent               => 'Datacentre',
+    rule                 => [
+      'and',
+        ['=', ['fact','org_datacentre'], 'dc02'],
+    ],
+  }
+
   node_group { 'Role: Puppet MOM':
     ensure               => 'present',
     classes              => {
@@ -174,7 +216,7 @@ class profile::puppet::classification {
     },
     environment          => 'production',
     override_environment => false,
-    parent               => 'All Nodes',
+    parent               => 'Application: Puppet',
     rule                 => [
       'and',
         ['=', ['trusted', 'extensions', 'pp_role'], 'mom'],
@@ -189,7 +231,7 @@ class profile::puppet::classification {
     },
     environment          => 'production',
     override_environment => false,
-    parent               => 'All Nodes',
+    parent               => 'Application: Puppet',
     rule                 => [
       'and',
         ['=', ['trusted', 'extensions', 'pp_role'], 'lb'],
@@ -204,7 +246,7 @@ class profile::puppet::classification {
     },
     environment          => 'production',
     override_environment => false,
-    parent               => 'All Nodes',
+    parent               => 'Application: Puppet',
     rule                 => [
       'and',
         ['=', ['trusted', 'extensions', 'pp_role'], 'compile'],
