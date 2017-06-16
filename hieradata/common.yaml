@@ -11,3 +11,28 @@ puppet_enterprise::master::code_manager::authenticate_webhook: false
 #https://docs.puppetlabs.com/pe/latest/console_config.html#tuning-the-classifier-synchronization-period
 #disable classifier scheduled sync and rely on r10k postrun command to sync the classes
 puppet_enterprise::profile::console::classifier_synchronization_period: 0
+
+profile::base::packages_redhat:
+  'vim-enhanced': {}
+  'bash-completion': {}
+  'ccze': {}
+  'colordiff': {}
+  'curl': {}
+  'git': {}
+  'htop': {}
+  'lftp': {}
+  'lynx': {}
+  'mc': {}
+  'mutt': {}
+  'psmisc': {}
+  'rsync': {}
+  'sysstat': {}
+  'telnet': {}
+  'wget': {}
+  'mercurial': {}
+  'tree': {}
+  'avahi': {}
+  'avahi-tools': {}
+  'nss-mdns': {}
+  'tree': {}
+  'ack': {}
