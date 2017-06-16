@@ -14,6 +14,11 @@ mod 'abrader-gms', '1.0.3'
 mod 'npwalker-pe_databases', '0.10.0'
 mod 'fvoges-pe_backup', '1.0.2'
 mod 'reidmv-pe_mco_shell_agent', '2.0.0'
+mod 'zack-exports', '0.0.6'
+mod 'dalen-puppetdbquery', '2.3.0'
+mod 'ghoneycutt-ssh', '3.52.0'
+mod 'ghoneycutt-common', '1.6.0'
+mod 'puppetlabs-firewall', '1.9.0'
 
 # Modules from Github using various references
 # Further examples: https://github.com/puppetlabs/r10k/blob/master/doc/puppetfile.mkd#examples
